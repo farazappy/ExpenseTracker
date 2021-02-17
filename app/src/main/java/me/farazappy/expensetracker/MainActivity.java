@@ -39,6 +39,12 @@ public class MainActivity extends AppCompatActivity implements DayAdapter.OnClic
 
     final static String TAG = MainActivity.class.getSimpleName();
 
+    @Override
+    protected void onResume() {
+        super.onResume();
+        setupView();
+    }
+
     SessionManager sessionManager;
     DatabaseHelper databaseHelper;
     DayAdapter dayAdapter;
