@@ -39,6 +39,12 @@ public class MainActivity extends AppCompatActivity implements DayAdapter.OnClic
 
     final static String TAG = MainActivity.class.getSimpleName();
 
+    @Override
+    protected void onResume() {
+        super.onResume();
+        setupView();
+    }
+
     SessionManager sessionManager;
     DatabaseHelper databaseHelper;
     DayAdapter dayAdapter;
@@ -58,6 +64,7 @@ public class MainActivity extends AppCompatActivity implements DayAdapter.OnClic
         setContentView(R.layout.activity_main);
 
         Toolbar toolbar = findViewById(R.id.toolbar);
+
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayShowTitleEnabled(false);
 
@@ -111,6 +118,13 @@ public class MainActivity extends AppCompatActivity implements DayAdapter.OnClic
                 new DatePickerDialog(MainActivity.this, date, myCalendar
                         .get(Calendar.YEAR), myCalendar.get(Calendar.MONTH),
                         myCalendar.get(Calendar.DAY_OF_MONTH)).show();
+            }
+        });
+        FloatingActionButton graphFabDaily = findViewById(R.id.fabGraph);
+        graphFabDaily.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(MainActivity.this,DailyChartActivity.class));
             }
         });
     }
@@ -174,9 +188,9 @@ public class MainActivity extends AppCompatActivity implements DayAdapter.OnClic
         //noinspection SimplifiableIfStatement
         if (id == R.id.action_logout) {
             Toast.makeText(getApplicationContext(), "Maybe later bro", Toast.LENGTH_LONG).show();
-//            sessionManager.logOut(false, null);
-//            startActivity(new Intent(this, LoginActivity.class));
-//            finish();
+            sessionManager.logOut(false, null);
+            startActivity(new Intent(this, LoginActivity.class));
+            finish();
         }
 
         return super.onOptionsItemSelected(item);

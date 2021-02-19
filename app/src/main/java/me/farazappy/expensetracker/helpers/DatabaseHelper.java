@@ -181,7 +181,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     }
 
 
-    private Day getDay(long dayId) {
+    public Day getDay(long dayId) {
         SQLiteDatabase db = this.getReadableDatabase();
         Day d = new Day();
 
