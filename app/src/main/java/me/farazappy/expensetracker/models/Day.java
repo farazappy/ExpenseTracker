@@ -1,5 +1,7 @@
 package me.farazappy.expensetracker.models;
 
+import android.util.Log;
+
 import java.io.Serializable;
 import java.util.HashMap;
 
@@ -60,6 +62,7 @@ public class Day implements Serializable {
         monthsMapping.put("November",11);
         monthsMapping.put("December",12);
         String str = new StringBuilder(this.getName()).reverse().toString().substring(6);
+
         String newStr = "";
         for(int j=0;j<str.length();j++)
         {
@@ -71,7 +74,9 @@ public class Day implements Serializable {
                 break;
             }
         }
+
         newStr = new StringBuilder(newStr).reverse().toString();
+
         return monthsMapping.get(newStr);
     }
 }

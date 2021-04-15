@@ -28,8 +28,11 @@ public class DailyChartActivity extends AppCompatActivity {
         for(int i=0;i<databaseHelper.getAllItems().size();i++)
         {
             long dayId = databaseHelper.getAllItems().get(i).getDayId();
+//            Log.d("DAY ID",String.valueOf(dayId));
             Day day = databaseHelper.getDay(dayId);
+
             int month = day.getMonth();
+//            Log.d("DAY",String.valueOf(month));
             if (costMonthHashMap.containsKey(month))
             {
                 costMonthHashMap.put(month,costMonthHashMap.get(month)+databaseHelper.getAllItems().get(i).getCost());
@@ -37,8 +40,9 @@ public class DailyChartActivity extends AppCompatActivity {
             else {
                 costMonthHashMap.put(month,databaseHelper.getAllItems().get(i).getCost());
             }
-        }
 
+        }
+//        Log.d("hashmap",costMonthHashMap.toString());
         GraphView graph = (GraphView) findViewById(R.id.graph);
         DataPoint[] dataPoints = new DataPoint[costMonthHashMap.size()];
         int i=0;
