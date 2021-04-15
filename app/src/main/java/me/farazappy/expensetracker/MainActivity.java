@@ -124,6 +124,7 @@ public class MainActivity extends AppCompatActivity implements DayAdapter.OnClic
         graphFabDaily.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                Log.d(TAG,"graph button clicked");
                 startActivity(new Intent(MainActivity.this,DailyChartActivity.class));
             }
         });
